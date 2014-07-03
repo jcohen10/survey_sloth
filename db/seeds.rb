@@ -1,17 +1,39 @@
-richard = Student.create(name: "Richard")
-raghav = Student.create(name: "Raghav")
+require 'faker'
 
-stephen = Teacher.create(name: "Stephen")
+10.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    username: Faker::Internet.user_name,
+    email: Faker::Internet.email,
+    password: "password"
+    )
+end
 
-dbc_1 = Klass.create(name: "Active Record 101")
-dbc_2 = Klass.create(name: "Sinatra 101")
+user_range = [*1..User.all.length]
 
+10.times do
+  Survey.create(title: Faker::Lorem.sentences(3), creator_id: user_range.sample)
+end
 
+survey_range = [*1..Survey.all.length]
 
-# richard = Student.first
-# raghav = Student.all[1]
-# stephen = Teacher.first
-# dbc_1 = Klass.first
-# dbc_2 = Klass.all[1]
-# stephen.klasses # => should be empty array
-# stephen.klasses << dbc_1 << dbc_2
+50.times do
+  Question.create(content: Faker::Lorem.sentences(3), survey_id: survey_range.sample)
+end
+
+question_range = [*1..Question.all.length]
+
+10.times do
+  PossibleChoice.create(content: Faker::Lorem.sentences(3), question_id: question_range.sample)
+end
+
+choice_range = [*1..PossibleChoice.all.length]
+
+10.times do
+  CompletedSurvey.create(user_id: user_range.sample, survey_id: survey_range.sample)
+end
+
+50.times do
+  Answer.create(user_id: user_range.sample, possible_choice_id: choice_range.sample)
+end
