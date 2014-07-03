@@ -1,0 +1,14 @@
+<form class="login" id="sign-in" method="post" action="/sign_in">
+  <input type="email" name="email" placeholder="email" value="<%=  %>"><br>
+  <input type="password" name="password" placeholder="password">
+  <br>
+  <button type="submit">Sign In</button>
+</form>
+
+google ajax requiest
+
+$.ajax({
+  url: "/signin",
+  type: "POST",
+  dataType: "json"
+})

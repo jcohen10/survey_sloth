@@ -1,0 +1,59 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+th {
+  text-align: left;
+}
+
+input {
+  margin-top: 5px;
+}
+
+.login {
+  float: center;
+  position: relative;
+  border: solid black;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+#nav {
+  width: 100%;
+  padding-bottom: 3em;
+  background: black;
+  color: white;
+}
+
+.nav_container {
+  float: right;
+}
+
+.nav_container a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.nav_container a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.nav_container a:hover {
+    color: #FFF;
+}
+
+.nav_container a:active {
+    color: #FFF;
+}
+
+.nav_container button {
+  background: #AAA;
+  color: black;
+  border-radius: 10px;
+  margin-left: 1em;
+  margin-top: 1em;
+}

@@ -1,0 +1,11 @@
+<% if @error %>
+  <div class="container"><br><br>
+    <%= @error %>
+  </div>
+<% end %>
+
+
+<% if !@user %>
+  <%= erb :Sign_up%>
+  <%= erb :Sign_in%>
+<% end %>

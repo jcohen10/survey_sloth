@@ -1,0 +1,24 @@
+<form class="login" method="post" action="/sign_up">
+
+  <input type="text" name="user[first_name]" placeholder="First Name" value="<%=  %>">
+  <span id="name-errors" class="errors"></span>
+  <br>
+
+  <input type="text" name="user[last_name]" placeholder="Last Name" value="<%=  %>">
+  <span id="name-errors" class="errors"></span>
+  <br>
+
+  <input type="text" name="user[username]" placeholder="Username" value="<%=  %>">
+  <span id="name-errors" class="errors"></span>
+  <br>
+
+  <input type="email" name="user[email]" placeholder="email" value="<%=  %>">
+  <span id="email-errors" class="errors"></span>
+  <br>
+
+  <input type="password" name="user[password]" placeholder="password">
+  <span id="entered_password-errors" class="errors"></span>
+  <br>
+
+  <button type="submit">Sign Up</button>
+</form>
