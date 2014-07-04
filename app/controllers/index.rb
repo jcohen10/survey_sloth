@@ -10,12 +10,11 @@ get '/user/sign_in' do
 end
 
 post '/sign_in' do
-
-
-  @user = User.find_by(email: params[:email]) try(:authenticate, params[:password])
+  p params
+  @user = User.authenticate(params[:email], params[:password])
   if @user
     session[:user_id] = @user.id
-    redirect '/survey/new'
+    redirect '/'
     # change redirect as needed
   else
     session[:error] = "Invalid email or password."
@@ -42,12 +41,15 @@ post '/sign_up' do
 end
 
 get '/survey/new' do
+  @user_id = session[:user_id]
   erb :new_survey
 end
 
 post "/survey/new" do
-  user_id = session[:user_id]
-
+  p params
+  @user_id = session[:user_id]
+  survey = Survey.create(title: params[:survey][:title], creator_id: session[:user_id])
+  answer1 = Answer.create
 end
 
 # not_found do
