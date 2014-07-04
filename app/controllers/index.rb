@@ -5,13 +5,17 @@ get '/' do
   erb :index
 end
 
+get '/user/sign_in' do
+  erb :sign_in
+end
+
 post '/sign_in' do
-  p params
-  @email = params[:email]
-  user = User.authenticate(@email, params[:password])
-  if user
-    session[:user_id] = user.id
-    redirect '/'
+
+
+  @user = User.find_by(email: params[:email]) try(:authenticate, params[:password])
+  if @user
+    session[:user_id] = @user.id
+    redirect '/survey/new'
     # change redirect as needed
   else
     session[:error] = "Invalid email or password."
@@ -35,6 +39,15 @@ post '/sign_up' do
     session[:error] = "Oops, something went wrong! Please try again"
     redirect '/'
   end
+end
+
+get '/survey/new' do
+  erb :new_survey
+end
+
+post "/survey/new" do
+  user_id = session[:user_id]
+
 end
 
 # not_found do
