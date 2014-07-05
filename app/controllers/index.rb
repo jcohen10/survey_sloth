@@ -69,7 +69,9 @@ get '/survey/:survey_id' do
 end
 
 post '/survey/:survey_id' do
-  Answer.new(user_id: session[:user_id], possible_choice: PossibleChoice.find(params["answer"]))
+  choice = PossibleChoice.find(params["answer"])
+  choice.increment!(:times_chosen)
+  Answer.new(user_id: session[:user_id], possible_choice: choice)
   redirect '/'
 end
 
