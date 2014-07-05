@@ -2,7 +2,11 @@ get '/' do
   display_errors
   p session
   @user = User.find_by_id(session[:user_id])
-  erb :index
+  if !@user
+    erb :index
+  else
+    redirect'/user/home'
+  end
 end
 
 get '/user/signin' do
@@ -40,15 +44,22 @@ post '/sign_up' do
   end
 end
 
+
 get '/survey/new' do
   @user_id = session[:user_id]
   erb :new_survey
+end
+
+get '/survey/all' do
+  @surveys = Survey.all
+  erb :all_surveys
 end
 
 get '/user/home' do
   p "*"*100
   p session[:user_id]
   @user = User.find(session[:user_id])
+  erb :user_home
 end
 
 post "/survey/new" do
