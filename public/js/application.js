@@ -18,7 +18,6 @@ console.log($('#items').size())
 
   $(document).on('click', '.remove_choice', function(event){
       event.preventDefault();
-      console.log("hi");
       $(this).parents('p').remove();
   });
 

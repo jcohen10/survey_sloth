@@ -62,6 +62,10 @@ get '/survey/:survey_id' do
   erb :survey_page
 end
 
+post '/survey/:survey_id' do
+  Answer.new(user_id: session[:user_id], possible_choice: PossibleChoice.find(params["answer"]))
+  redirect '/'
+end
 # not_found do
 #   status 404
 #   erb :oops
