@@ -2,7 +2,11 @@ get '/' do
   display_errors
   p session
   @user = User.find_by_id(session[:user_id])
-  erb :index
+  if !@user
+    erb :index
+  else
+    redirect'/user/home'
+  end
 end
 
 get '/user/signin' do
