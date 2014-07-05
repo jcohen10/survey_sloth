@@ -1,12 +1,5 @@
 get '/' do
-  display_errors
-  p session
-  @user = User.find_by_id(session[:user_id])
-  if !@user
-    erb :index
-  else
-    redirect'/user/home'
-  end
+  erb :index
 end
 
 get '/user/signin' do
@@ -19,7 +12,6 @@ post '/signin' do
   if @user
     session[:user_id] = @user.id
     redirect '/user/home'
-
   else
     session[:error] = "Invalid email or password."
     redirect '/'
@@ -46,8 +38,11 @@ end
 
 
 get '/survey/new' do
-  @user_id = session[:user_id]
-  erb :new_survey
+  if logged_in?
+    erb :new_survey
+  else
+    redirect '/'
+  end
 end
 
 get '/survey/all' do
@@ -56,10 +51,11 @@ get '/survey/all' do
 end
 
 get '/user/home' do
-  p "*"*100
-  p session[:user_id]
-  @user = User.find(session[:user_id])
-  erb :user_home
+  if logged_in?
+    erb :user_home
+  else
+    redirect '/'
+  end
 end
 
 post "/survey/new" do
@@ -71,7 +67,7 @@ post "/survey/new" do
     PossibleChoice.create(question_id: question.id, content: params["choice #{count}"])
     count += 1
   end
-  redirect '/'
+  redirect '/user/home'
 end
 
 get '/survey/:survey_id' do
@@ -83,23 +79,28 @@ post '/survey/:survey_id' do
   choice = PossibleChoice.find(params["answer"])
   choice.increment!(:times_chosen)
   Answer.new(user_id: session[:user_id], possible_choice: choice)
-  redirect '/'
+  redirect '/user/home'
 end
 
 get '/survey/all/user/:user_id' do
-  @user = User.find(session[:user_id])
-  @surveys = @user.surveys
-  erb :user_surveys
+  if logged_in?
+    @surveys = @user.surveys
+    erb :user_surveys
+  else
+    redirect '/'
+  end
 end
 
 get '/survey/results/:survey_id' do
-
-  p params[:survey_id]
-  session[:survey_id] = params[:survey_id]
-  @survey = Survey.find(params[:survey_id])
-  @question = Question.where(survey_id: @survey.id).last
-  @possiblechoices = PossibleChoice.where(question_id: @question.id)
-  erb :survey_stats
+  if logged_in?
+    session[:survey_id] = params[:survey_id]
+    @survey = Survey.find(params[:survey_id])
+    @question = Question.where(survey_id: @survey.id).last
+    @possiblechoices = PossibleChoice.where(question_id: @question.id)
+    erb :survey_stats
+  else
+    redirect '/'
+  end
 end
 
 post '/survey/results/stats/' do
