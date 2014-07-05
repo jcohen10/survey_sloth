@@ -5,14 +5,17 @@ get '/' do
   erb :index
 end
 
-post '/sign_in' do
+get '/user/signin' do
+  erb :sign_in
+end
+
+post '/signin' do
   p params
-  @email = params[:email]
-  user = User.authenticate(@email, params[:password])
-  if user
-    session[:user_id] = user.id
-    redirect '/'
-    # change redirect as needed
+  @user = User.authenticate(params[:email], params[:password])
+  if @user
+    session[:user_id] = @user.id
+    redirect '/user/home'
+
   else
     session[:error] = "Invalid email or password."
     redirect '/'
@@ -36,6 +39,41 @@ post '/sign_up' do
     redirect '/'
   end
 end
+
+get '/survey/new' do
+  @user_id = session[:user_id]
+  erb :new_survey
+end
+
+get '/user/home' do
+  p "*"*100
+  p session[:user_id]
+  @user = User.find(session[:user_id])
+end
+
+post "/survey/new" do
+  survey = Survey.create(creator_id: session[:user_id], title: params["title"])
+  question = Question.create(survey_id: survey.id, content: params["question"])
+  num_qs = params.length - 2
+  count = 1
+  num_qs.times do
+    PossibleChoice.create(question_id: question.id, content: params["choice #{count}"])
+    count += 1
+  end
+  redirect '/'
+end
+
+get '/survey/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  erb :survey_page
+end
+
+post '/survey/:survey_id' do
+  Answer.new(user_id: session[:user_id], possible_choice: PossibleChoice.find(params["answer"]))
+  redirect '/'
+end
+
+
 
 # not_found do
 #   status 404

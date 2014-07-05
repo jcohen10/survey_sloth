@@ -9,3 +9,7 @@
   <%= erb :Sign_up%>
   <%= erb :Sign_in%>
 <% end %>
+
+<%if @user %>
+  <% erb :user_home %>
+<% end %>
