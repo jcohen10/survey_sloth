@@ -77,7 +77,7 @@ end
 
 post '/survey/:survey_id' do
   Answer.new(user_id: session[:user_id], possible_choice: PossibleChoice.find(params["answer"]))
-  redirect '/'
+  redirect '/survey/all'
 end
 
 get '/survey/all/user/:user_id' do
