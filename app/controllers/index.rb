@@ -46,9 +46,10 @@ get '/survey/new' do
 end
 
 post "/survey/new" do
+  p params.length
   survey = Survey.create(creator_id: session[:user_id], title: params["title"])
   question = Question.create(survey_id: survey.id, content: params["question"])
-  num_qs = params.length - 1
+  num_qs = params.length - 2
   count = 1
   num_qs.times do
     PossibleChoice.create(question_id: question.id, content: params["choice #{count}"])
@@ -66,6 +67,9 @@ post '/survey/:survey_id' do
   Answer.new(user_id: session[:user_id], possible_choice: PossibleChoice.find(params["answer"]))
   redirect '/'
 end
+
+
+
 # not_found do
 #   status 404
 #   erb :oops
