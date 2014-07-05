@@ -47,9 +47,17 @@ end
 
 post "/survey/new" do
   p params
-  @user_id = session[:user_id]
-  survey = Survey.create(title: params[:survey][:title], creator_id: session[:user_id])
-  answer1 = Answer.create
+  user_id = session[:user_id]
+  survey = Survey.create(creator_id: session[:user_id], title: params["title"])
+  question = Question.create(survey_id: survey.id, content: params["question"])
+  num_qs = params.length - 1
+  p num_qs
+  count = 1
+  num_qs.times do
+    PossibleChoice.create(question_id: question.id, content: params["choice #{count}"])
+    count += 1
+  end
+  "U STILL SUCK"
 end
 
 # not_found do

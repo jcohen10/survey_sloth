@@ -3,25 +3,27 @@ $(document).ready(function() {
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
 
-var addDiv = $('#items');
+var addDiv = $('#answers');
 
-var i = $('#items').size() + 1;
+var i = $('#answers').size() + 1;
 console.log(i);
 console.log($('#items').size())
 
-  $('#add').click(function(e) {
-    $('<p><input type="text" id="new_choice" placeholder = "New Possible Answer" name="choice '+ i +'"><button id="remove_choice">Remove!</button></p>').appendTo(addDiv);
+  $('#add').on('click', function(e) {
+    $('<p><input type="text" id="new_choice" placeholder = "New Possible Answer" name="choice '+ i +'"><button href="#" id="remove_choice">Remove!</button></p>').appendTo(addDiv);
     i++;
     return false; //Investigate this.
   });
 
-  $('#remove_choice').bind('click', function(e){
+  $('#remove_choice').on('click', function(event){
+    event.preventDefault();
     if (i > 2) {
-      console.log('yolo')
-      // $(this).parents.remove();
+      $(this).parents('p').remove(); //Does not work as intended need to come back to this.
       i--;
-      console.log(i)
     }
+    return false;
   });
 
 });
+
+
