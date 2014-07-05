@@ -2,7 +2,11 @@ get '/' do
   display_errors
   p session
   @user = User.find_by_id(session[:user_id])
-  erb :index
+  if !@user
+    erb :index
+  else
+    redirect'/user/home'
+  end
 end
 
 get '/user/signin' do
@@ -32,7 +36,7 @@ post '/sign_up' do
   @user = User.new params[:user]
   if @user.save
     session[:user_id] = @user.id
-    redirect '/'
+    redirect '/user/home'
     # change redirect as needed
   else
     session[:error] = "Oops, something went wrong! Please try again"
@@ -40,9 +44,15 @@ post '/sign_up' do
   end
 end
 
+
 get '/survey/new' do
   @user_id = session[:user_id]
   erb :new_survey
+end
+
+get '/survey/all' do
+  @surveys = Survey.all
+  erb :all_surveys
 end
 
 get '/user/home' do
@@ -76,6 +86,11 @@ post '/survey/:survey_id' do
   redirect '/'
 end
 
+get '/survey/all/user/:user_id' do
+  @user = User.find(session[:user_id])
+  @surveys = @user.surveys
+  erb :user_surveys
+end
 
 get '/survey/results/:survey_id' do
 
@@ -92,6 +107,7 @@ post '/survey/results/stats/' do
   @possiblechoices = PossibleChoice.where(question_id: @question.id)
   p @possiblechoices
   {:response => @possiblechoices}.to_json
+
 end
 
 # not_found do

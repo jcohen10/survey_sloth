@@ -1,4 +1,13 @@
 <h1>Hey <%= @user.username %></h1>
 
+<form name="input" action="/survey/new" method="get">
+  <input type="submit" value="Create a Survey">
+</form>
 
+<form name="input" action="/survey/all" method="get">
+  <input type="submit" value="Take a survey">
+</form>
 
+<form name="input" action="/survey/all/user/<%=@user.id %>" method="get">
+  <input type="submit" value="All of your Created Surveys">
+</form>
