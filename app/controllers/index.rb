@@ -46,18 +46,20 @@ get '/survey/new' do
 end
 
 post "/survey/new" do
-  p params
-  user_id = session[:user_id]
   survey = Survey.create(creator_id: session[:user_id], title: params["title"])
   question = Question.create(survey_id: survey.id, content: params["question"])
   num_qs = params.length - 1
-  p num_qs
   count = 1
   num_qs.times do
     PossibleChoice.create(question_id: question.id, content: params["choice #{count}"])
     count += 1
   end
-  "U STILL SUCK"
+  redirect '/'
+end
+
+get '/survey/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  erb :survey_page
 end
 
 # not_found do

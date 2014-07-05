@@ -10,18 +10,16 @@ console.log(i);
 console.log($('#items').size())
 
   $('#add').on('click', function(e) {
-    $('<p><input type="text" id="new_choice" placeholder = "New Possible Answer" name="choice '+ i +'"><button href="#" id="remove_choice">Remove!</button></p>').appendTo(addDiv);
+    event.preventDefault();
+    $('<p><input type="text" id="new_choice" placeholder = "New Possible Answer" name="choice '+ i +'"><button  class="remove_choice">Remove!</button></p>').appendTo(addDiv);
     i++;
     return false; //Investigate this.
   });
 
-  $('#remove_choice').on('click', function(event){
-    event.preventDefault();
-    if (i > 2) {
-      $(this).parents('p').remove(); //Does not work as intended need to come back to this.
-      i--;
-    }
-    return false;
+  $(document).on('click', '.remove_choice', function(event){
+      event.preventDefault();
+      console.log("hi");
+      $(this).parents('p').remove();
   });
 
 });

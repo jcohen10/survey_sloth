@@ -1,0 +1,10 @@
+<h1><%= @survey.title %></h1>
+<% @survey.questions.each do |survey| %>
+  <br><%= survey.content %>
+  <form name = "/take_survey" method= "POST" id = "<% @survey.id %>">
+    <% @survey.questions.last.possible_choices.each do |possible_choice| %>
+      <input type="radio" name="question" value="possible_choice<%possible_choice.id%>"><%= possible_choice.content %><br>
+      <% end %>
+  <input type="submit" value = "submit">
+</form>
+  <% end %>
