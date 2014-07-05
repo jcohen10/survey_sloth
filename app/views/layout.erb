@@ -22,12 +22,11 @@
 <body>
   <div id="nav">
   <% if @user %>
-
     <div class="nav_container"><button><a href="/user/home"><%= @user.username %></a></button></div>
-  <div class="nav_container"><button><a href="/sign_out">Sign out</a></button></div>
+     <div class="nav_container"><button><a href="/sign_out">Sign out</a></button></div>
   <% else %>
-    <div class="nav_container"><a href="/user/sign_in"><button>Sign In</button></a></div>
-    <div class="nav_container"><a href="/user/signup"><button>Sign Up</button></a></div>
+    <div class="nav_container"><a href="/user/signin"><button>Sign In</button></a></div>
+    <div class="nav_container"><a href="/"><button>Sign Up</button></a></div>
   <% end %>
   </div>
   <%= yield %>
