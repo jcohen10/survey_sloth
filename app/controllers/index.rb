@@ -70,11 +70,29 @@ get '/survey/:survey_id' do
 end
 
 post '/survey/:survey_id' do
-  Answer.new(user_id: session[:user_id], possible_choice: PossibleChoice.find(params["answer"]))
+  choice = PossibleChoice.find(params["answer"])
+  choice.increment!(:times_chosen)
+  Answer.new(user_id: session[:user_id], possible_choice: choice)
   redirect '/'
 end
 
 
+get '/survey/results/:survey_id' do
+
+  p params[:survey_id]
+  session[:survey_id] = params[:survey_id]
+  @survey = Survey.find(params[:survey_id])
+  erb :survey_stats
+end
+
+post '/survey/results/stats/' do
+  p "*"*100
+  @survey = Survey.find(session[:survey_id])
+  @question = Question.where(survey_id: @survey.id).last
+  @possiblechoices = PossibleChoice.where(question_id: @question.id)
+  p @possiblechoices
+  {:response => @possiblechoices}.to_json
+end
 
 # not_found do
 #   status 404
