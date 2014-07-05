@@ -40,9 +40,15 @@ post '/sign_up' do
   end
 end
 
+
 get '/survey/new' do
   @user_id = session[:user_id]
   erb :new_survey
+end
+
+get '/survey/all' do
+  @surveys = Survey.all
+  erb :all_surveys
 end
 
 get '/user/home' do
