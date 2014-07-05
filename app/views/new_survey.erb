@@ -1,14 +1,11 @@
 
-  <form id#survey="survey" action="/survey/new" method = "POST">
+  <form id = "addSurvey" action="/survey/new" method = "POST">
     <input type="text" name="survey[:title]" placeholder = "Enter Your Form Title">
-    <p>
-      <p><input type="text" name="survey[:question]" placeholder="Enter Your Question">
-     </p>
-      <p>
-      <label for="var2">Variable 2: </label>
-      <input type="text" name="var2" id="var2"><span class="removeVar">Remove Variable</span>
-      </p>
-       <span id="addVar">Add Possible Answer...</span>
+      <span id="question"><input type="text" name="survey[:question]" placeholder="Enter Your Question"></span>
+      <div id ='items'>
+        <div><input type="text" id="choice 1" placeholder="Enter Possible Answer"></div>
+      <button id="add">Add Possible Answer</button></div>
+
     <input type="submit" value="Submit your Survey!">
   </form>
 
