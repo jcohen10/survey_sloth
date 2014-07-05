@@ -10,5 +10,16 @@
 }
 
 </style>
-<div class = "chart">
-</div>
+<table width = "auto">
+  <tr>
+    <td>
+      <% @possiblechoices.each do |choice| %>
+      <%= choice.content %><br>
+      <% end %>
+    </td>
+    <td> <div class = "chart"></div>
+    </td>
+  </tr>
+</table>
+
+
