@@ -76,6 +76,22 @@ post '/survey/:survey_id' do
 end
 
 
+get '/survey/results/:survey_id' do
+
+  p params[:survey_id]
+  session[:survey_id] = params[:survey_id]
+  @survey = Survey.find(params[:survey_id])
+  erb :survey_stats
+end
+
+post '/survey/results/stats/' do
+  p "*"*100
+  @survey = Survey.find(session[:survey_id])
+  @question = Question.where(survey_id: @survey.id).last
+  @possiblechoices = PossibleChoice.where(question_id: @question.id)
+  p @possiblechoices
+  {:response => @possiblechoices}.to_json
+end
 
 # not_found do
 #   status 404
