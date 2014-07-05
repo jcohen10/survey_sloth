@@ -5,17 +5,17 @@ get '/' do
   erb :index
 end
 
-get '/user/sign_in' do
+get '/user/signin' do
   erb :sign_in
 end
 
-post '/sign_in' do
+post '/signin' do
   p params
   @user = User.authenticate(params[:email], params[:password])
   if @user
     session[:user_id] = @user.id
-    redirect '/'
-    # change redirect as needed
+    redirect '/user/home'
+
   else
     session[:error] = "Invalid email or password."
     redirect '/'
@@ -45,8 +45,13 @@ get '/survey/new' do
   erb :new_survey
 end
 
+get '/user/home' do
+  p "*"*100
+  p session[:user_id]
+  @user = User.find(session[:user_id])
+end
+
 post "/survey/new" do
-  p params.length
   survey = Survey.create(creator_id: session[:user_id], title: params["title"])
   question = Question.create(survey_id: survey.id, content: params["question"])
   num_qs = params.length - 2
