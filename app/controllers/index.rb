@@ -49,6 +49,7 @@ get '/user/home' do
   p "*"*100
   p session[:user_id]
   @user = User.find(session[:user_id])
+  erb :user_home
 end
 
 post "/survey/new" do
