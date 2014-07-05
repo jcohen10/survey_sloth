@@ -90,7 +90,7 @@ get '/survey/all/user/:user_id' do
   @user = User.find(session[:user_id])
   @surveys = @user.surveys
   erb :user_surveys
-
+end
 
 get '/survey/results/:survey_id' do
 
