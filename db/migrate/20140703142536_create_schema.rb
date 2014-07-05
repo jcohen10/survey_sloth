@@ -24,6 +24,7 @@ class CreateSchema < ActiveRecord::Migration
     create_table :possible_choices do |t|
       t.string :content
       t.references :question
+      t.integer :times_chosen, default: 0
 
       t.timestamps
     end
