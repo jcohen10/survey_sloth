@@ -6,12 +6,6 @@ get '/survey/new' do
   end
 end
 
-get '/survey/all' do
-  @surveys = Survey.all
-  erb :all_surveys
-end
-
-
 post '/survey/new' do
   survey = Survey.create(creator_id: session[:user_id], title: params["title"])
   question = Question.create(survey_id: survey.id, content: params["question"])
@@ -22,6 +16,11 @@ post '/survey/new' do
     count += 1
   end
   redirect '/user/home'
+end
+
+get '/survey/all' do
+  @surveys = Survey.all
+  erb :all_surveys
 end
 
 get '/survey/:survey_id' do
@@ -44,7 +43,6 @@ get '/survey/:survey_id/edit' do
     redirect '/'
   end
 end
-
 
 put '/survey/:survey_id' do
   @survey = Survey.find(params[:survey_id])

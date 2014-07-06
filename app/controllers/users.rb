@@ -3,7 +3,6 @@ get '/user/signin' do
 end
 
 post '/signin' do
-  p params
   @user = User.authenticate(params[:email], params[:password])
   if @user
     session[:user_id] = @user.id
@@ -20,7 +19,6 @@ get '/sign_out' do
 end
 
 post '/sign_up' do
-  p params
   @user = User.new params[:user]
   if @user.save
     session[:user_id] = @user.id
