@@ -2,17 +2,17 @@
 <h2><%=@survey.title %></h2>
 
 <h3><%=@question.content %></h3>
-<style>
 
 
-<table width = "auto">
+
+<table width ="auto">
   <tr>
     <td>
       <% @possiblechoices.each do |choice| %>
       <%= choice.content %><br>
       <% end %>
     </td>
-    <td><div class = "chart"></div>
+    <td><div class="chart"></div>
     </td>
   </tr>
 </table>
