@@ -82,6 +82,22 @@ post '/survey/:survey_id' do
   redirect '/user/home'
 end
 
+get '/survey/:survey_id/edit' do
+  if logged_in?
+    @survey = Survey.find(params[:survey_id])
+    erb :edit_survey
+  else
+    redirect '/'
+  end
+end
+
+
+put '/survey/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  @survey.update_attributes(title: params[:title])
+  redirect "/survey/#{@survey.id}"
+end
+
 get '/survey/all/user/:user_id' do
   if logged_in?
     @surveys = @user.surveys
