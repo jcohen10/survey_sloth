@@ -1,15 +1,19 @@
+
+
+
+<span class ="logo">Survey Sloth</span>
 <% if @error %>
   <div class="container"><br><br>
     <%= @error %>
   </div>
 <% end %>
 
-
+<div id="home_fade">
 <% if !@user %>
   <%= erb :Sign_up%>
   <%= erb :Sign_in%>
 <% end %>
-
+</div>
 <%if @user %>
   <% erb :user_home %>
 <% end %>

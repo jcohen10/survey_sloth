@@ -1,3 +1,4 @@
+
 #motto {
   color: white;
   font-size: 20px;
@@ -24,10 +25,12 @@ input {
 .login {
   float: center;
   position: relative;
-  /*border: solid black;*/
+  border: solid black;
+
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
+  background-color: #99CCFF;
 }
 
 .login button {
@@ -39,21 +42,23 @@ input {
   width: 100%;
   padding-bottom: 3em;
   background: black;
+  opacity: 0.4;
   color: white;
 }*/
 
 .nav_container {
   float: right;
+  font-family: Georgia;
 }
 
 .nav_container a:link {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .nav_container a:visited {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .nav_container a:hover {
@@ -75,8 +80,8 @@ input {
   margin-right: 1em;
 }
 
-html { 
-  background: url('sloth.gif') no-repeat center center fixed; 
+html {
+  background: url('sloth.gif') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -84,3 +89,5 @@ html {
 
 
 
+
+>>>>>>> 257ac9a4bce099d3b6d75c3e303be16c922891d7
