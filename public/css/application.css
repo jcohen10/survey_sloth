@@ -1,9 +1,18 @@
+#motto {
+  color: white;
+  font-size: 20px;
+  float: center;
+  display: inline;
+  padding-left: 350px;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
 }
@@ -15,18 +24,23 @@ input {
 .login {
   float: center;
   position: relative;
-  border: solid black;
+  /*border: solid black;*/
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
 }
 
-#nav {
+.login button {
+ color: white;
+ background: none;
+}
+
+/*#nav {
   width: 100%;
   padding-bottom: 3em;
   background: black;
   color: white;
-}
+}*/
 
 .nav_container {
   float: right;
@@ -51,9 +65,22 @@ input {
 }
 
 .nav_container button {
-  background: #AAA;
-  color: black;
-  border-radius: 10px;
-  margin-left: 1em;
-  margin-top: 1em;
+  font-size: 30px;
+  color: white;
+  background: none;
+  /*color: black;*/
+  border-radius: none;
+  margin-left: 0.2em;
+  margin-top: 0.2em;
+  margin-right: 1em;
 }
+
+html { 
+  background: url('sloth.gif') no-repeat center center fixed; 
+  background-size: cover;
+}
+
+
+
+
+
