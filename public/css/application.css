@@ -1,7 +1,11 @@
-body{
-  background-color: steelblue;
-}
 
+#motto {
+  color: white;
+  font-size: 20px;
+  float: center;
+  display: inline;
+  padding-left: 350px;
+}
 
 .container {
   margin: 20px auto;
@@ -9,6 +13,7 @@ body{
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
 }
@@ -20,20 +25,26 @@ input {
 .login {
   float: center;
   position: relative;
-  border: solid white;
+  border: solid black;
+
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
   background-color: #99CCFF;
 }
 
-#nav {
+.login button {
+ color: white;
+ background: none;
+}
+
+/*#nav {
   width: 100%;
   padding-bottom: 3em;
   background: black;
   opacity: 0.4;
   color: white;
-}
+}*/
 
 .nav_container {
   float: right;
@@ -59,34 +70,24 @@ input {
 }
 
 .nav_container button {
-  background: #AAA;
-  color: black;
-  border-radius: 10px;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.logo {
-  font-family: 'Lobster', cursive;
-  font-size: 64px;
+  font-size: 30px;
   color: white;
-
-}
-#home_fade {
-  font: 10px Georgia;
-  text-align: left;
-  padding: 3px;
-  margin: 1px;
-  color: white;
+  background: none;
+  /*color: black;*/
+  border-radius: none;
+  margin-left: 0.2em;
+  margin-top: 0.2em;
+  margin-right: 1em;
 }
 
-
-
-.chart div {
-  font: 10px sans-serif;
-  background-color: #99CCFF;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
+html {
+  background: url('sloth.gif') no-repeat center center fixed;
+  background-size: cover;
 }
+
+
+
+
+
+
+>>>>>>> 257ac9a4bce099d3b6d75c3e303be16c922891d7

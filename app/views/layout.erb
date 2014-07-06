@@ -19,8 +19,11 @@
   <script src="/js/application.js"></script>
 
   <title></title>
+
 </head>
 <body>
+
+  <p id='motto'>are you sure that's the right answer?</p>
   <div id="nav">
   <% if @user %>
     <div class="nav_container"><button><a href="/user/home"><%= @user.username %></a></button></div>
@@ -30,6 +33,11 @@
     <div class="nav_container"><a href="/"><button>Sign Up</button></a></div>
   <% end %>
   </div>
+
+
+
+
+
   <%= yield %>
 </body>
 </html>
