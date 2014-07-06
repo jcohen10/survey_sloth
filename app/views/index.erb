@@ -1,15 +1,29 @@
+<style>
+#home_fade {
+  font: 10px Georgia;
+  background-color: steelblue;
+  text-align: left;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
+
+
+
 <% if @error %>
   <div class="container"><br><br>
     <%= @error %>
   </div>
 <% end %>
 
-
+<div id="home_fade">
 <% if !@user %>
   <%= erb :Sign_up%>
   <%= erb :Sign_in%>
 <% end %>
-
+</div>
 <%if @user %>
   <% erb :user_home %>
 <% end %>
