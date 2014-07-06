@@ -1,10 +1,8 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-  $(document).ready(function(){
-    $("#home_fade").hide(0).delay(500).fadeIn(2000)
-});
+
+
+
+    $("#home_fade").hide(0).delay(500).fadeIn(2000);
   var data =[];
   $.ajax({
     url: "/survey/results/stats/",
@@ -47,5 +45,6 @@ console.log($('#items').size())
       event.preventDefault();
       $(this).parents('p').remove();
   });
+
 
 });

@@ -1,4 +1,4 @@
 <h1>All Surveys:</h1>
 <% @surveys.each do |survey| %>
-<a href="/survey/<%=survey.id %>"><%= survey.title %></a><br>
+<a href="/survey/<%=survey.id %>" rel="modal:open"><%= survey.title %></a><br>
 <% end %>

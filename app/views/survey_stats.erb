@@ -1,8 +1,6 @@
+<div id ="survey_stats" class ="modal">
 <h2><%=@survey.title %></h2>
-<style>
 
-
-</style>
 <table width = "auto">
   <tr>
     <td>
@@ -10,7 +8,7 @@
       <%= choice.content %><br>
       <% end %>
     </td>
-    <td> <div class = "chart"></div>
+    <td><div class = "chart"></div>
     </td>
   </tr>
 </table>
@@ -18,3 +16,6 @@
 <form name="update" action='/survey/<%=@survey.id %>/edit' method="get">
   <input type="submit" value="Update Survey">
 </form>
+</div>
+
+

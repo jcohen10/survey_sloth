@@ -13,6 +13,18 @@
   color: white;
 }
 
+#body_container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -100px;
+}
+
+#body_container button{
+  color: white;
+  background: none;
+}
 
 
 .chart div {
@@ -26,6 +38,8 @@
 
 body{
   background-color: steelblue;
+  font-family: Georgia;
+  color: white;
 }
 
 
@@ -110,5 +124,7 @@ input {
   margin-top: 0.2em;
   margin-right: 1em;
 }
-
+a:visited{
+  color: white;
+}
 
