@@ -3,6 +3,7 @@ $(document).ready(function() {
 
 
     $("#home_fade").hide(0).delay(500).fadeIn(2000);
+
   var data =[];
   $.ajax({
     url: "/survey/results/stats/",
