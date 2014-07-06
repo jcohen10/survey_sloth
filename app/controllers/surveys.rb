@@ -47,7 +47,7 @@ end
 put '/survey/:survey_id' do
   @survey = Survey.find(params[:survey_id])
   @survey.update_attributes(title: params[:title])
-  redirect "/survey/#{@survey.id}"
+  redirect "/user/home"
 end
 
 get '/survey/all/user/:user_id' do
