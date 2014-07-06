@@ -1,0 +1,6 @@
+<form name="update" action="/survey/<%=@survey.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <input name="title" type="text" value="<%=@survey.title %>"><br>
+  <input type="submit" value="Update Survey">
+</form>
+
