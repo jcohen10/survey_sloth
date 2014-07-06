@@ -1,3 +1,8 @@
+body{
+  background-color: steelblue;
+}
+
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -15,32 +20,34 @@ input {
 .login {
   float: center;
   position: relative;
-  border: solid black;
+  border: solid white;
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
+  background-color: #99CCFF;
 }
 
 #nav {
   width: 100%;
   padding-bottom: 3em;
   background: black;
-  transparency: 0.4;
+  opacity: 0.4;
   color: white;
 }
 
 .nav_container {
   float: right;
+  font-family: Georgia;
 }
 
 .nav_container a:link {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .nav_container a:visited {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .nav_container a:hover {
@@ -57,4 +64,29 @@ input {
   border-radius: 10px;
   margin-left: 1em;
   margin-top: 1em;
+}
+
+.logo {
+  font-family: 'Lobster', cursive;
+  font-size: 64px;
+  color: white;
+
+}
+#home_fade {
+  font: 10px Georgia;
+  text-align: left;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: #99CCFF;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
 }
