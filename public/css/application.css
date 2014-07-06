@@ -1,4 +1,35 @@
 
+.logo {
+  font-family: 'Lobster', cursive;
+  font-size: 64px;
+  color: white;
+
+}
+#home_fade {
+  font: 10px Georgia;
+  text-align: left;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: #99CCFF;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+body{
+  background-color: steelblue;
+}
+
+
+
 #motto {
   color: white;
   font-size: 20px;
@@ -80,14 +111,8 @@ input {
   margin-right: 1em;
 }
 
-html {
-  background: url('sloth.gif') no-repeat center center fixed;
-  background-size: cover;
-}
 
 
 
 
 
-
->>>>>>> 257ac9a4bce099d3b6d75c3e303be16c922891d7
